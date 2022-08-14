@@ -1,12 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import style from '../components/Style.module.css'
-import '../App.css'
+// import style from '../components/Style.module.css'
+import style from './Style.module.css'
+
+
 import {Row, Col, Button} from "react-bootstrap"
 
 const Home = () => {
   return (
-    <div>
+    <div className={style.main} >
     <div className={style.inputData}>
       <Row>
         <Col>

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Link } from 'react-router-dom'
 import {Form ,Button} from 'react-bootstrap'
 import Spinner from 'react-bootstrap/Spinner';
-import '../App.css'
+import style from './Style.module.css'
 
 
 const Register = () => {
@@ -62,7 +62,7 @@ const handleSubmit=async function(e){
     
 
   return (
-    <div >
+    <div className={style.main}>
     <Form onSubmit={(e)=>handleSubmit(e)}>
         <h1>Register here </h1>
 
@@ -103,17 +103,11 @@ const handleSubmit=async function(e){
          required={true}  
           />
         
-       {/* <Button variant="primary mb-3"type='submit' >Submit</Button> */}
        <div className="d-grid gap-2">
        <Button variant="primary mb-3"
         type='submit'>Submit
           </Button>
        </div>
-    </Form>
-
-    {/* <Link to="/home">
-     <Button  variant="dark mb-3" >Home</Button>
-     </Link> */}
      
      <Link to="/home">
      <div className="d-grid gap-2">
@@ -124,13 +118,14 @@ const handleSubmit=async function(e){
   
       <h4 >
       {isLoading?( 
-      <Spinner animation="border" role="status">
+        <Spinner animation="border" role="status">
       <span className="visually-hidden">Loading</span>
     </Spinner>):(
-      err
-    )}
+      <span className={style.error}>{err} </span>
+      )}
        </h4>
 
+      </Form>
    
 </div>
   )

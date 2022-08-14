@@ -5,7 +5,7 @@
     font-family: 'Cormorant SC', serif;
   }
   
-  body {
+  .main {
     line-height: 3rem;
     background: #f3f2ef;
     display: flex;
@@ -107,28 +107,16 @@
   }
   
   
-  #date {
+  .error {
     text-align: center;
     margin-top: 0.5rem;
-    color: #57606f;
+    color: #d51d1d;
     font-size: 1.2rem;
     font-weight: 300;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   
-  .temp {
-    margin-top: 2.5rem;
-    text-align: center;
-    font-size: 3rem;
-  }
-  
-  .tempmin_max {
-    text-align: center;
-    margin-top: 0.3rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #2c2d2e;
-  }
+
   
   
   @media (max-width: 600px) {

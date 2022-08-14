@@ -7,6 +7,7 @@ import Logout from './Logout'
 import {Link} from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
+import style from './Style.module.css'
 
 const Login = () => {
 
@@ -93,7 +94,7 @@ const Login = () => {
 
  
   return (
-    <>
+    <div className={style.main}>
     
     {user?(   
       <Logout/>
@@ -120,11 +121,9 @@ const Login = () => {
       }} 
       required={true}
       />
-     {/* <Button variant="primary mb-3" type='submit' >Submit</Button> */}
      <div className="d-grid gap-2">
      <Button variant="primary mb-3" type='submit'>Submit</Button>
       </div>
-     </Form>
      <Link to="/home">
      <div className="d-grid gap-2">
      <Button variant="dark">Home</Button>
@@ -133,16 +132,17 @@ const Login = () => {
 
      <h4 >
       {isLoading?( 
-      <Spinner animation="border" role="status">
+        <Spinner animation="border" role="status">
       <span className="visually-hidden">Loading</span>
     </Spinner>):(
-      err
-    )}
+     <span className={style.error}> {err}</span> 
+      )}
        </h4>
 
+      </Form>
   </>
     )}
-    </>
+    </div>
   
   )
 }
