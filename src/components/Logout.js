@@ -5,6 +5,8 @@ import { logout, selectUser } from './features/userSlice';
 import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import style from './Style.module.css'
+
 
 const Logout = () => {
     const user=useSelector(selectUser)
@@ -18,57 +20,22 @@ const Logout = () => {
     }
   return (
     <>
-     {/* <h1>
-        Welcome <span>{user.username}</span>
-     </h1>
-      <Button variant="danger mb-3" onClick={(e)=>handleLogout(e)}>Logout</Button> */}
-
-<Navbar bg="light">
-        <Container>
-          <Navbar.Brand href="#home">Brand link</Navbar.Brand>
-        </Container>
-      </Navbar>
-      <br />
-      <Navbar bg="light">
-        <Container>
-          <Navbar.Brand>Hello ,{user.username}</Navbar.Brand>
-        </Container>
-      </Navbar>
-      <br />
-      <Navbar bg="dark">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            />
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
-      <br />
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Button variant="danger mb-3" onClick={(e)=>handleLogout(e)}>Logout</Button>
+        <Navbar.Brand>Hello ,{user.username}</Navbar.Brand>  
+        <Button variant="danger" onClick={(e)=>handleLogout(e)}>Logout</Button>
         </Container>
       </Navbar>
-    </>
+ 
+     <div className={style.main}>
+
+      <Button variant="outline-secondary mb-2"  size="lg">Create Game</Button>
+
+      <Button variant="outline-success "  size="lg">Join Game</Button>
+     </div>
+
+   </>
   )
 }
 
 export default Logout
-
-
-//     -----------------
-
-// function BrandExample() {
-//   return (
-//     <>
-     
-//     </>
-//   );
-// }
-
-// export default BrandExample;

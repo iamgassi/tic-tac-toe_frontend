@@ -94,12 +94,12 @@ const Login = () => {
 
  
   return (
-    <div className={style.main}>
+    <div >
     
     {user?(   
       <Logout/>
     ):(
-      <>
+      <div className={style.main}>
       <Form onSubmit={(e)=>handleSubmit(e)}>
       <h1>Login here </h1>
 
@@ -140,7 +140,7 @@ const Login = () => {
        </h4>
 
       </Form>
-  </>
+  </div>
     )}
     </div>
   

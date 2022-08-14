@@ -13,12 +13,12 @@ const Home = () => {
       <Row>
         <Col>
        <Link to="/login">
-     <Button variant="outline-success">Login</Button>
+     <Button variant="outline-success" size="lg">Login</Button>
       </Link>  
         </Col>
         <Col>
        <Link to="/register">
-             <Button variant="outline-secondary">Register</Button>
+             <Button variant="outline-secondary" size="lg">Register</Button>
        </Link>
         </Col>
        </Row>
