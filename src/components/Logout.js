@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/exports';
 import { logout, selectUser } from './features/userSlice';
 import { Button } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import style from './Style.module.css'
@@ -29,9 +30,15 @@ const Logout = () => {
  
      <div className={style.main}>
 
+     <Link to="/createGame">
       <Button variant="outline-secondary mb-2"  size="lg">Create Game</Button>
+     </Link>
+    
 
+     <Link to="/joinGame">
+  
       <Button variant="outline-success "  size="lg">Join Game</Button>
+      </Link>
      </div>
 
    </>

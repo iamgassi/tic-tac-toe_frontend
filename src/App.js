@@ -3,6 +3,8 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Register from './components/Register'
 import Home from './components/Home'
+import CreateGame from './components/CreateGame/CreateGame';
+import JoinGame from './components/JoinGame/JoinGame';
 import {Routes,Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,6 +18,9 @@ function App() {
   <Route exact path="/register" element={ <Register/>}> </Route>
   <Route exact path="/logout" element={ <Logout/>}> </Route>
   <Route exact path="/home" element={ <Home/>}> </Route>
+  <Route exact path="/createGame" element={ <CreateGame/>}> </Route>
+  <Route exact path="/joinGame" element={ <JoinGame/>}> </Route>
+
   <Route path="*" element={<h1>Page not Found</h1>}></Route>
   </Routes>
   );
