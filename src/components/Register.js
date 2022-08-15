@@ -49,7 +49,7 @@ const handleSubmit=async function(e){
       repeatPass:repeatPass
      }
      return(
-      fetch("http://localhost:8000/register",{
+      fetch("http://localhost:8000/user",{
         method:"POST",
         body:JSON.stringify(data),
         headers:{

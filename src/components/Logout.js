@@ -23,7 +23,7 @@ const Logout = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand>Hello ,{user.username}</Navbar.Brand>  
+        <Navbar.Brand> <i class="fa-solid fa-user"></i> Hello ,{user.username}</Navbar.Brand>  
         <Button variant="danger" onClick={(e)=>handleLogout(e)}>Logout</Button>
         </Container>
       </Navbar>
