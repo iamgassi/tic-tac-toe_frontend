@@ -1,33 +1,14 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux/es/exports';
-import { logout, selectUser } from './features/userSlice';
 import { Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import style from './Style.module.css'
-
+import Nav from './Nav';
 
 const Logout = () => {
-    const user=useSelector(selectUser)
-    const dispatch=useDispatch();
 
-    const handleLogout=(e)=>{
-       e.preventDefault();
-
-         dispatch(logout(
-         ))
-    }
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-        <Navbar.Brand> <i class="fa-solid fa-user"></i> Hello ,{user.username}</Navbar.Brand>  
-        <Button variant="danger" onClick={(e)=>handleLogout(e)}>Logout</Button>
-        </Container>
-      </Navbar>
- 
+      <Nav/>
      <div className={style.main}>
 
      <Link to="/createGame">
