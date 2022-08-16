@@ -1,7 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import style from './Game.module.css';
+import io from 'socket.io-client'
+import { useSelector } from 'react-redux';
+import { selectData } from '../features/socketData';
+import Nav from '../Nav';
 
 const Game = () => {
+   
+   //here need to call dispatch(clearData());
+
+	// console.log(socket)
+					// const socketData=useSelector(selectData)
+					// console.log(socketData)
+					// const name=socketData.name;
+					// const room=socketData.room;
+					// const rounds=socketData.rounds;
+					// let socket;
+					// useEffect(() => {
+					// 	// const { name, room } = queryString.parse(location.search);
+					// socket=io("http://localhost:9000/")
+					// 	// socket = io(ENDPOINT);
+					
+					// 	// setRoom(room);
+					// 	// setName(name)
+					// 	socket.emit('join', { name, room }, (error) => {
+					// 	if(error) {
+					// 		alert(error);
+					// 	}
+					// 	});
+					// }, []);
+
+					// useEffect(() => {
+					// 	// socket.on('message', message => {
+					// 	//   setMessages(messages => [ ...messages, message ]);
+					// 	// });
+					// 	socket.on("roomData", ({ users }) => {
+					// 	console.log(users)
+					// 	});
+					// }, []);
 	const [turn, setTurn] = useState('x');
 	const [cells, setCells] = useState(Array(9).fill(''));
 	const [winner, setWinner] = useState();
@@ -114,6 +150,12 @@ const Game = () => {
       )}
 		</div>
 	);
+	// return(
+	// 	<>
+	// 	<Nav/>
+	// 	<h1>Tic tac toe</h1>
+	// 	</>
+	// )
 };
 
 export default Game;
