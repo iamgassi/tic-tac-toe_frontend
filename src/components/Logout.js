@@ -3,9 +3,12 @@ import { Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import style from './Style.module.css'
 import Nav from './Nav';
+import { useDispatch } from 'react-redux';
+import { clearData } from './features/socketData';
 
 const Logout = () => {
-
+  const dispatch=useDispatch();
+  dispatch(clearData)
   return (
     <>
       <Nav/>
