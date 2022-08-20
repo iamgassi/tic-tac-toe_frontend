@@ -8,10 +8,10 @@ import { clearData } from './features/socketData';
 
 const Logout = () => {
   const dispatch=useDispatch();
-  dispatch(clearData)
+  dispatch(clearData())
   return (
     <>
-      <Nav/>
+      <Nav />
      <div className={style.main}>
 
      <Link to="/createGame">

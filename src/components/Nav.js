@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { clearData } from './features/socketData';
 const Nav = () => {
     const user=useSelector(selectUser)
+    // const user={username:"Gaurav"};
     const dispatch=useDispatch();
 
     const handleLogout=(e)=>{
@@ -22,7 +23,7 @@ const Nav = () => {
     <div>
          <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand> <i className="fa-solid fa-user"></i> Hello ,{user.username}</Navbar.Brand>  
+        <Navbar.Brand> <i className="fa-solid fa-user"></i> Hello ,{user.username} </Navbar.Brand>  
         <Link to="/login">
         <Button variant="danger" onClick={(e)=>handleLogout(e)}>Logout</Button>
         </Link>

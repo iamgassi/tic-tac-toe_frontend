@@ -97,7 +97,7 @@ const Login = () => {
     <div >
     
     {user?(   
-      <Logout/>
+      <Logout />
     ):(
       <div className={style.main}>
       <Form onSubmit={(e)=>handleSubmit(e)}>
