@@ -7,6 +7,7 @@ import Nav from '../Nav';
 import { selectUser } from '../features/userSlice';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import io from 'socket.io-client'
 
 const CreateGame = () => {
   
@@ -15,8 +16,10 @@ const CreateGame = () => {
   const [rounds, setRounds] = useState('');
   const socketData=useSelector(selectData)
   const user=useSelector(selectUser)
+  
 
   const dispatch=useDispatch();
+  
   const handleClick=(e)=>{
     // e.preventDefault();
     console.log(room,name,rounds)
@@ -26,6 +29,7 @@ const CreateGame = () => {
     rounds
    }))
   }
+
   return (
   <>
     <div className={style.joinOuterContainer}>

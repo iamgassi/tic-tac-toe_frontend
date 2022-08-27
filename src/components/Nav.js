@@ -15,8 +15,7 @@ const Nav = () => {
     const handleLogout=(e)=>{
     //    e.preventDefault();
          dispatch(logout(
-         ),
-         clearData()
+         )
          )
     }
   return (

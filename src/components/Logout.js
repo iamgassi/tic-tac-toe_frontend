@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 import { clearData } from './features/socketData';
 
 const Logout = () => {
-  const dispatch=useDispatch();
-  dispatch(clearData())
+  // const dispatch=useDispatch();
+  // dispatch(clearData())
   return (
     <>
       <Nav />

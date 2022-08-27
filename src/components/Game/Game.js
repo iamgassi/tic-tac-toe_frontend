@@ -5,36 +5,44 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearData, selectData } from '../features/socketData';
 import Nav from '../Nav';
 import { Col, Container, Row } from 'react-bootstrap';
+import { render } from 'react-dom';
+import CreateGame from '../CreateGame/CreateGame';
+import Login from '../Login';
 let socket;
 const Game = () => {
 	// const dispatch=useDispatch();
    const socketData=useSelector(selectData)
-   const [userInRoom,SetUserInRoom]=useState('')
-   const [users,setUsers]=useState('')
-
+//    const [userInRoom,SetUserInRoom]=useState('')
+const [users,setUsers]=useState('')
+const [messages,setMessages]=useState([])
+const[usernameTaken,setUsernameTaken] =useState(false);
+const dispatch=useDispatch()
+const [turn, setTurn] = useState('');
+// console.log(users[0].name)
+const [cells, setCells] = useState(Array(9).fill(''));
+const [winner, setWinner] = useState();
+   
 					const name=socketData.name;
 					const room=socketData.room;
 					const rounds=socketData.rounds;
+					
 					
 					useEffect(() => {
 					socket=io("http://localhost:9000/")
 						// socket = io(ENDPOINT);
 						console.log(socket)
-						socket.emit('join', { name, room }, (error) => {
+						socket.emit('join', { name, room, rounds }, (error) => {
 						if(error) {
 							alert(error);
+							setUsernameTaken(true);
+							// dispatch(clearData())
 						}
 						});
 
 						return()=>{
-						
 							  socket.disconnect();
-                             
-						
+							//   dispatch(clearData())
 						}
-						
-
-					   
 					}, []);
 
 					useEffect(() => {
@@ -43,15 +51,18 @@ const Game = () => {
 						// });
 						socket.on("roomData", ({ users }) => {
 						       setUsers(users)
-							}
+                                setTurn(users[0].name)
+							   
+							}							
 						);
-					}, [userInRoom]);
+					}, []);
+
+					useEffect(()=>{
+						socket.emit("play",cells)
+					},[cells])
 
 				
 				
-	const [turn, setTurn] = useState('x');
-	const [cells, setCells] = useState(Array(9).fill(''));
-	const [winner, setWinner] = useState();
   
 
 	const checkForWinner = (squares) => {
@@ -99,14 +110,13 @@ const Game = () => {
 		}
 
 		let squares = [...cells];
-
-		if (turn === 'x') {
+		if (turn === users[0].name) {
 
 			squares[num] = 'x';
-			setTurn('o');
+			setTurn(users[1].name);
 		} else {
 			squares[num] = 'o';
-			setTurn('x');
+			setTurn(users[0].name);
 		}
 
 		checkForWinner(squares);
@@ -117,16 +127,18 @@ const Game = () => {
 		setWinner(null);
 		setCells(Array(9).fill(''));
 	};
-
 	const Cell = ({ num }) => {
+		if(users.length==2)            //here we apply the two user requirement
 		return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
 	};
 
+    // console.log(usernameTaken)
 	// console.log({userInRoom})
 	return (
 		<>
-
-	  <Nav/>
+		{usernameTaken?(<Login/>):(
+		 <>
+		<Nav/>
 			<h2 className={style.container}>Number of Rounds:{rounds} </h2>
       <Row >
 	  <Col >
@@ -154,10 +166,9 @@ const Game = () => {
 		
 	  </Col>
 	  <Col>
-
-		      
-					<table>
+	            
 						Turn: {turn}
+					<table>
 						
 						<tbody>
 							<tr>
@@ -179,6 +190,8 @@ const Game = () => {
 						</tbody>
 					</table>
 
+	  </Col>
+      </Row>
 			{winner ?(
 				<>
 					<p>{winner} is the winner!</p>
@@ -194,9 +207,10 @@ const Game = () => {
         ):(null)
         
       )}
-	  </Col>
-      </Row>
-	 
+
+		</>
+		)}
+	  	 
 		</>
 	
 	); 
