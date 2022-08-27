@@ -52,7 +52,6 @@ const [winner, setWinner] = useState();
 						socket.on("roomData", ({ users }) => {
 						       setUsers(users)
                                 setTurn(users[0].name)
-							   
 							}							
 						);
 					}, []);
